@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 public class CustomerTest {
 
@@ -14,9 +13,9 @@ public class CustomerTest {
 
     @BeforeEach
     public void setUp() {
-        blackPanther = new Movie("Black Panther", Movie.REGULAR);
-        parasite = new Movie("Parasite", Movie.NEW_RELEASE);
-        toyStory = new Movie("Toy Story", Movie.CHILDRENS);
+        blackPanther = new Movie("Black Panther", PriceCode.REGULAR);
+        parasite = new Movie("Parasite", PriceCode.NEW_RELEASE);
+        toyStory = new Movie("Toy Story", PriceCode.CHILDRENS);
 
         sunday = new Rental(blackPanther, 3);
         thursday = new Rental(parasite, 2);
