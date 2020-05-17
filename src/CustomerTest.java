@@ -1,21 +1,25 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class CustomerTest {
 
     private final Movie blackPanther = new Movie("Black Panther", PriceCode.REGULAR);
     private final Movie parasite = new Movie("Parasite", PriceCode.NEW_RELEASE);
+    private final Movie us = new Movie("Us", PriceCode.NEW_RELEASE);
     private final Movie toyStory = new Movie("Toy Story", PriceCode.CHILDRENS);
     private Rental sunday;
     private Rental thursday;
     private Rental friday;
+    private Rental saturday;
     private Customer alf;
 
     @BeforeEach
     public void setUp() {
         sunday = new Rental(blackPanther, 3);
         thursday = new Rental(parasite, 2);
-        friday = new Rental(toyStory, 1);
+        friday = new Rental(us, 1);
+        saturday = new Rental(toyStory, 1);
 
         alf = new Customer("Alf");
     }
@@ -30,12 +34,19 @@ public class CustomerTest {
                 + "You earned 0 frequent renter points";
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public void frequentRenterPointsTest() {
+        Assertions.assertEquals(1, sunday.getFrequentRenterPoints());
+        Assertions.assertEquals(2, thursday.getFrequentRenterPoints());
+        Assertions.assertEquals(1, friday.getFrequentRenterPoints());
+        Assertions.assertEquals(1, saturday.getFrequentRenterPoints());
+    }
 
     @org.junit.jupiter.api.Test
     public void statementAllRentalsTest() {
         alf.addRental(sunday);
         alf.addRental(thursday);
-        alf.addRental(friday);
+        alf.addRental(saturday);
 
         String actual = alf.statement();
 
