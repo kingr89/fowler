@@ -3,9 +3,9 @@ import org.junit.jupiter.api.BeforeEach;
 
 public class CustomerTest {
 
-    private Movie blackPanther;
-    private Movie parasite;
-    private Movie toyStory;
+    private final Movie blackPanther = new Movie("Black Panther", PriceCode.REGULAR);
+    private final Movie parasite = new Movie("Parasite", PriceCode.NEW_RELEASE);
+    private final Movie toyStory = new Movie("Toy Story", PriceCode.CHILDRENS);
     private Rental sunday;
     private Rental thursday;
     private Rental friday;
@@ -13,10 +13,6 @@ public class CustomerTest {
 
     @BeforeEach
     public void setUp() {
-        blackPanther = new Movie("Black Panther", PriceCode.REGULAR);
-        parasite = new Movie("Parasite", PriceCode.NEW_RELEASE);
-        toyStory = new Movie("Toy Story", PriceCode.CHILDRENS);
-
         sunday = new Rental(blackPanther, 3);
         thursday = new Rental(parasite, 2);
         friday = new Rental(toyStory, 1);
